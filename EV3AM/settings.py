@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     # Nuevas Aplicaciones
-    'usuarios',
+    'usuarios.apps.UsuariosConfig',
     'libros',
     'peliculas',
 ]
