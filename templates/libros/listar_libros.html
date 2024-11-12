@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Libros{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Lista de Libros</h2>
+    {% if request.user.is_authenticated %}
+        {% if request.user.perfil.rol == 'editor' or request.user.perfil.rol == 'administrador' %}
+            <a href="{% url 'libros:crear_libro' %}" class="btn btn-success mb-3">Crear Libro</a>
+        {% endif %}
+    {% endif %}
+    
+    {% for libro in libros %}
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">{{ libro.titulo }}</h5>
+                <p class="card-text">{{ libro.descripcion|truncatechars:100 }}</p>
+                <p class="card-text"><small class="text-muted">Autor: {{ libro.autor }}</small></p>
+                <a href="{% url 'libros:detalle_libro' libro.pk %}" class="btn btn-primary">Leer más</a>
+            </div>
+        </div>
+    {% empty %}
+        <p>No hay libros disponibles.</p>
+    {% endfor %}
+</div>
+{% endblock %}

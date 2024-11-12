@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ libro.titulo }}{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>{{ libro.titulo }}</h2>
+    <p><small class="text-muted">Autor: {{ libro.autor }}</small></p>
+    <p><small class="text-muted">Publicado el: {{ libro.fecha_publicacion|date:"d/m/Y" }}</small></p>
+    <hr>
+    
+    <h5>Descripción</h5>
+    <p>{{ libro.descripcion }}</p>
+    
+    <h5>Detalles</h5>
+    <ul>
+        <li><strong>Edición:</strong> {{ libro.edicion }}</li>
+        <li><strong>ISBN:</strong> {{ libro.isbn }}</li>
+        <li><strong>Idioma:</strong> {{ libro.idioma }}</li>
+    </ul>
+
+    {% if request.user.is_authenticated and request.user.perfil.rol in ['editor', 'administrador'] %}
+        <a href="{% url 'libros:editar_libro' libro.pk %}" class="btn btn-secondary">Editar Libro</a>
+    {% endif %}
+
+    <a href="{% url 'libros:listar_libros' %}" class="btn btn-link mt-3">Volver a la Lista de Libros</a>
+</div>
+{% endblock %}
