@@ -9,6 +9,7 @@ class Libro(models.Model):
     autor = models.CharField(max_length=100)
     isbn = models.CharField(max_length=13, unique=True)
     idioma = models.CharField(max_length=50)
+    portada = models.ImageField(upload_to='portadas/', null=True, blank=True)
 
     def __str__(self):
         return self.titulo

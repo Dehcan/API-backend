@@ -109,15 +109,15 @@ Templates y archivos estaticos, configuracion
     <head>
     <meta charset="UTF-8">
     <title>{% block title %}Medios de Arte{% endblock %}</title>
-    {% load static %}
+    {% load static %} -->
     <!-- CSS de Bootstrap desde CDN -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
     <!-- Tu archivo de estilos CSS -->
-    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
     </head>
-    <body>
+    <body> -->
     <!-- Barra de navegación -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="{% url 'usuarios:login' %}">Medios de Arte</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContenido" aria-controls="navbarContenido" aria-expanded="false" aria-label="Toggle navigation">
@@ -159,31 +159,31 @@ Templates y archivos estaticos, configuracion
                 </ul>
             </div>
         </div>
-    </nav>
+    </nav> -->
 
     <!-- Contenido principal -->
-    <div class="container mt-4">
+    <!-- <div class="container mt-4">
         {% block content %}
         {% endblock %}
-    </div>
+    </div> -->
 
     <!-- Pie de página -->
-    <footer class="bg-dark text-white mt-4">
+    <!-- <footer class="bg-dark text-white mt-4">
         <div class="container text-center py-3">
             &copy; 2024 Alejandro Merino. Todos los derechos reservados.
         </div>
-    </footer>
+    </footer> -->
 
     <!-- JavaScript de Bootstrap desde CDN -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script
         src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js">
     </script>
     <script
         src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js">
-    </script>
+    </script> -->
     <!-- Tu archivo de scripts JS -->
-    <script src="{% static 'js/scripts.js' %}"></script>
+    <!-- <script src="{% static 'js/scripts.js' %}"></script>
     </body>
-    </html> -->
+    </html>  -->
 

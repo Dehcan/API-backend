@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}Crear Nueva Película{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Crear Nueva Película</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        
+        <div class="form-group">
+            <label for="id_titulo">Título:</label>
+            {{ form.titulo.errors }}
+            {{ form.titulo }}
+        </div>
+        
+        <div class="form-group">
+            <label for="id_descripcion">Descripción:</label>
+            {{ form.descripcion.errors }}
+            {{ form.descripcion }}
+        </div>
+        
+        <div class="form-group">
+            <label for="id_director">Director:</label>
+            {{ form.director.errors }}
+            {{ form.director }}
+        </div>
+        
+        <div class="form-group">
+            <label for="id_elenco">Elenco:</label>
+            {{ form.elenco.errors }}
+            {{ form.elenco }}
+        </div>
+        
+        <div class="form-group">
+            <label for="id_idiomas">Idiomas:</label>
+            {{ form.idiomas.errors }}
+            {{ form.idiomas }}
+        </div>
+        
+        <div class="form-group">
+            <label for="id_cartel">Cartel:</label>
+            {{ form.cartel.errors }}
+            {{ form.cartel }}
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Publicar</button>
+    </form>
+</div>
+{% endblock %}

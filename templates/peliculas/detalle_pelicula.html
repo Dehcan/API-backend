@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ pelicula.titulo }}{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>{{ pelicula.titulo }}</h2>
+    <img src="{{ pelicula.cartel.url }}" class="img-fluid mb-3" alt="{{ pelicula.titulo }}">
+    
+    <p><small class="text-muted">Director: {{ pelicula.director }}</small></p>
+    <p><small class="text-muted">Elenco: {{ pelicula.elenco }}</small></p>
+    <p><small class="text-muted">Idiomas: {{ pelicula.idiomas }}</small></p>
+    <hr>
+    <p>{{ pelicula.descripcion }}</p>
+
+    {% if request.user.is_authenticated and (request.user.perfil.rol == 'administrador' or request.user.perfil.rol == 'editor') %}
+        <a href="{% url 'peliculas:editar_pelicula' pelicula.pk %}" class="btn btn-secondary">Editar Película</a>
+    {% endif %}
+
+    <form method="post" action="{% url 'peliculas:borrar_pelicula' pelicula.pk %}" class="d-inline">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Borrar Pelicula</button>
+    </form>
+
+    <a href="{% url 'peliculas:listar_peliculas' %}" class="btn btn-link mt-3">Volver a la Lista de Películas</a>
+</div>
+{% endblock %}

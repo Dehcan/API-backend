@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Películas{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Lista de Películas</h2>
+    
+    {% if request.user.is_authenticated %}
+        {% if request.user.perfil.rol == 'editor' or request.user.perfil.rol == 'administrador' %}
+            <a href="{% url 'peliculas:crear_pelicula' %}" class="btn btn-success mb-3">Crear Película</a>
+        {% endif %}
+    {% endif %}
+    
+    {% for pelicula in peliculas %}
+        <div class="card mb-3">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="{{ pelicula.cartel.url }}" class="card-img" alt="{{ pelicula.titulo }}">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ pelicula.titulo }}</h5>
+                        <p class="card-text">{{ pelicula.descripcion|truncatechars:100 }}</p>
+                        <a href="{% url 'peliculas:detalle_pelicula' pelicula.pk %}" class="btn btn-primary">Leer más</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <p>No hay películas disponibles.</p>
+    {% endfor %}
+    
+    {{ request.user.perfil.rol }}
+</div>
+{% endblock %}

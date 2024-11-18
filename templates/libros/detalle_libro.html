@@ -9,6 +9,10 @@
     <p><small class="text-muted">Publicado el: {{ libro.fecha_publicacion|date:"d/m/Y" }}</small></p>
     <hr>
     
+    {% if libro.portada %}
+        <img src="{{ libro.portada.url }}" alt="Portada de {{ libro.titulo }}" class="img-fluid mb-3">
+    {% endif %}
+
     <h5>Descripción</h5>
     <p>{{ libro.descripcion }}</p>
     
@@ -23,6 +27,11 @@
         <a href="{% url 'libros:editar_libro' libro.pk %}" class="btn btn-secondary">Editar Libro</a>
     {% endif %}
 
+    <form method="post" action="{% url 'libros:borrar_libro' libro.pk %}" class="d-inline">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Borrar Libro</button>
+    </form>
+    
     <a href="{% url 'libros:listar_libros' %}" class="btn btn-link mt-3">Volver a la Lista de Libros</a>
 </div>
 {% endblock %}

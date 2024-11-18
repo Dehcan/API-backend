@@ -14,7 +14,7 @@ def detalle_libro(request, pk):
 @login_required
 def crear_libro(request):
     if request.method == 'POST':
-        form = LibroForm(request.POST)
+        form = LibroForm(request.POST, request.FILES)
         if form.is_valid():
             libro = form.save()
             return redirect('libros:detalle_libro', pk=libro.pk)
@@ -26,10 +26,18 @@ def crear_libro(request):
 def editar_libro(request, pk):
     libro = get_object_or_404(Libro, pk=pk)
     if request.method == 'POST':
-        form = LibroForm(request.POST, instance=libro)
+        form = LibroForm(request.POST, request.FILES, instance=libro)
         if form.is_valid():
             form.save()
             return redirect('libros:detalle_libro', pk=libro.pk)
     else:
         form = LibroForm(instance=libro)
     return render(request, 'libros/editar_libro.html', {'form': form})
+
+@login_required
+def borrar_libro(request, pk):
+    libro = get_object_or_404(Libro, pk=pk)
+    if request.method == 'POST':
+        libro.delete()
+        return redirect('libros:listar_libros')
+    return render(request, 'libros/confirmar_borrar_libro.html', {'libro': libro})
