@@ -23,7 +23,7 @@
         <li><strong>Idioma:</strong> {{ libro.idioma }}</li>
     </ul>
 
-    {% if request.user.is_authenticated and request.user.perfil.rol in ['editor', 'administrador'] %}
+    {% if request.user.is_authenticated and request.user == imagen.autor or request.user.perfil.rol == 'administrador' %}
         <a href="{% url 'libros:editar_libro' libro.pk %}" class="btn btn-secondary">Editar Libro</a>
     {% endif %}
 

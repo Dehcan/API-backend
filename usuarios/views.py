@@ -31,7 +31,7 @@ def login_view(request):#Vista para el inicio de sesión
         usuario = authenticate(request, username=username, password=password)#Autenticamos al usuario con las credenciales
         if usuario is not None:
             login(request, usuario)#Iniciamos sesión
-            return redirect('libros:lista_articulos')#Redireccionamos al inicio de la aplicación si el usuario es autenticado con éxito
+            return redirect('libros:listar_libros')#Redireccionamos al inicio de la aplicación si el usuario es autenticado con éxito
         else:
             messages.error(request, 'Nombre de usuario o contraseña incorrectos.')
     return render(request, 'usuarios/login.html')

@@ -7,7 +7,7 @@
     <!-- CSS de Bootstrap desde CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Tu archivo de estilos CSS -->
-    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
     <!-- Barra de navegación -->
@@ -20,12 +20,19 @@
 
             <div class="collapse navbar-collapse" id="navbarContenido">
                 <ul class="navbar-nav mr-auto">
+                     <!-- <li class="nav-item">
+                        <a class="nav-link" href="{% url 'libros:crear_libro' %}">Añadir Libros</a>
+                    </li>  -->
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'libros:lista_libros' %}">Blog</a>
+                        <a class="nav-link" href="{% url 'libros:listar_libros' %}">Libros</a>
                     </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="{% url 'peliculas:crear_pelicula' %}">Añadir pelicula</a>
+                    </li>  -->
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'peliculas:lista_cartel' %}">Galería</a>
+                        <a class="nav-link" href="{% url 'peliculas:listar_peliculas' %}">Peliculas</a>
                     </li>
+                    
                 </ul>
                 <ul class="navbar-nav">
                     {% if user.is_authenticated %}
